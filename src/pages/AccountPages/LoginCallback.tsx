@@ -14,13 +14,6 @@ export default () => {
     const { setLoginInfo } = useUser()
 
     useAsync(async () => {
-        /* userManager.signinCallback().then(res => {
-             console.log('user',res)
-             navigate('/')
-         }).catch(err => {
-             errors.setValue(JSON.stringify(err))
-             console.log('error',err)
-         })*/
         if (!StringUtils.isNullOrEmpty(access_token)) {
             const userInfoClient = new UserInfoClient(workFlowBaseUrl, {
                 fetch: (input: RequestInfo, init?: RequestInit | undefined) => {

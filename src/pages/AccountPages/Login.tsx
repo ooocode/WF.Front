@@ -24,7 +24,7 @@ export default () => {
     const [rememberPassword, setRememberPassword] = useLocalStorage('rememberPassword', false)
 
 
-    const { control, getValues, reset, handleSubmit } = useForm<ILoginProps>({
+    const { control, reset, handleSubmit } = useForm<ILoginProps>({
         defaultValues: {
             userName: query.get('userName') ?? '',
             password: query.get('password') ?? ''
@@ -70,7 +70,7 @@ export default () => {
 
             if (rememberPassword) {
                 await localforage.setItem('rememberUser', value)
-            }else{
+            } else {
                 await localforage.removeItem('rememberUser')
             }
 
