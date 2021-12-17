@@ -166,7 +166,7 @@ const EditForm = () => {
                 targetKeys={selectedUnitKeys}
                 onChange={onChange}
                 //onSearch={this.handleSearch}
-                rowKey={item => item.name ?? ''}
+                rowKey={item => item.longId ?? ''}
                 render={item => item.name ?? ''}
                 locale={{ itemUnit: '已选中的单位', itemsUnit: '未选中的单位' }}
             />

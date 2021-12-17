@@ -10,6 +10,7 @@ import { isSSR } from "../Commmon/consts";
 import { useFormQueryString } from "../hooks/useFormQueryString";
 import { ErrorModel } from "../WorkFlowApi";
 import 'bootstrap/dist/css/bootstrap.css'
+import { SelectUsersModalEx } from "./SelectUsersModalEx";
 
 const FormPage = ({ children }: { children: any }) => {
     const SelectUsersModal = useMemo(() => React.lazy(() => import('./SelectUsersModal')), [])
@@ -50,6 +51,13 @@ const FormPage = ({ children }: { children: any }) => {
                         isSSR === false ? <Suspense fallback={<></>}><SelectUsersModal /></Suspense> : <></>
                     }
                 </div> : <></>}
+
+                {/* {mode === 'todo' ? <div className="text-center">
+                    {
+                        isSSR === false ? <Suspense fallback={<></>}><SelectUsersModalEx /></Suspense> : <></>
+                    }
+                </div> : <></>} */}
+
 
                 {prodefKey === "QJGL" ? <p>
                     <hr />

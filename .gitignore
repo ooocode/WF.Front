@@ -12,6 +12,9 @@
 /build
 /.cache
 /public
+/OA
+OA.7z
+OA.zip
 
 # misc
 .DS_Store

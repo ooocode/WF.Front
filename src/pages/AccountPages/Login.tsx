@@ -116,11 +116,14 @@ export default () => {
         }
     }, [userName, password])*/
 
-    const onCancel = () => {
+    const onCancel = async () => {
         reset({
             userName: '',
             password: ''
         })
+
+        setRememberPassword(false)
+        await localforage.removeItem('rememberUser')
     }
 
     return <div>

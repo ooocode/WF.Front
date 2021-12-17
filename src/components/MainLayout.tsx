@@ -249,6 +249,7 @@ const MainLayout1 = ({ children }: { children: React.ReactNode }) => {
                             <Menu.Item key="sub1-13" icon={<UserSwitchOutlined />} onClick={() => navigate('/ArchPages/UserTaskDelegate')}>公文授权</Menu.Item>
 
                             <Menu.Item key="sub1-14" icon={<StarFilled />} onClick={() => navigate('/ArchPages/ArchMonitorStar')}>星标公文</Menu.Item>
+                            <Menu.Item key="sub1-15" icon={<StarFilled />} onClick={() => navigate('/AdminPages/AttachmentsManagerPage')}>附件搜索</Menu.Item>
                         </SubMenu>
 
                         <SubMenu key="sub2" icon={<LaptopOutlined />} title="会议申请" style={{ background: '#002E8A', color: 'white' }}>
@@ -330,11 +331,18 @@ const MainLayout1 = ({ children }: { children: React.ReactNode }) => {
                             </li>
 
                             <li className="nav-item">
-                                <a id="email" className="nav-link" href="http://172.26.130.105/webmail" target='_blank' style={{ color: 'black', fontSize: 18 }}>电子邮件{unReadEmailCount.error === undefined && (unReadEmailCount.value ?? 0) > 0 && <span style={{ color: 'red' }}>({unReadEmailCount.value})</span>}</a>
+                                <a id="email" className="nav-link" href="http://172.26.130.105/webmail"
+                                    target='_blank' style={{ color: 'black', fontSize: 18 }}>电子邮件{unReadEmailCount.error === undefined && (unReadEmailCount.value ?? 0) > 0 && <span style={{ color: 'red' }}>({unReadEmailCount.value})</span>}</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="http://172.26.130.105:4096/Contract" target='_blank' style={{ color: 'black', fontSize: 18 }}>通讯录</a>
+                                <a className="nav-link" href="http://172.26.130.105:4096/Contract"
+                                    target='_blank' style={{ color: 'black', fontSize: 18 }}>通讯录</a>
                             </li>
+
+                            {mainDepartment === '区市监局/办公室' && <li className="nav-item">
+                                <a className="nav-link" href="http://172.26.130.105/oaiiiv3/SendMessage.aspx?FromOther=1"
+                                    target='_blank' style={{ color: 'black', fontSize: 18 }}>短信功能</a>
+                            </li>}
 
                             <li className="nav-item">
                                 <a className="nav-link"

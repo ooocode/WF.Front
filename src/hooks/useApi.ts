@@ -1,6 +1,6 @@
 ﻿import { ReceivingUnitsClient } from './../../apis/GWExchange';
 import {
-  AttachmentsClient, FlowActivityAuthorizationsClient,
+  AttachmentsClient, AttachmentsManagerClient, FlowActivityAuthorizationsClient,
   FlowProcessInstancesClient,
   FormAttachmentsClient,
   OpinionTypesClient, ProcessDefsClient, ProcessDefsExClient, ProcessInstancesClient, QueryTasksClient, TasksClient, UserCustomOpinionsClient, UserReply, UsersClient, UserTaskClaimsClient, UserTasksClient
@@ -127,6 +127,7 @@ export const askForLeaveClient = new AskForLeaveClient(workFlowBaseUrl, { fetch:
 
 export const keyValueStorageClient = new KeyValueStorageClient(workFlowBaseUrl, { fetch: fetchClient })
 export const dataStorageClient = new DataStorageClient(workFlowBaseUrl, { fetch: fetchClient })
+export const attachmentsManagerClient = new AttachmentsManagerClient(workFlowBaseUrl, { fetch: fetchClient })
 
 
 //export const userTasksClient = new UserTasksClient(workFlowBaseUrl, { fetch: fetchClient })

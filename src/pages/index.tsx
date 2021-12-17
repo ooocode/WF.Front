@@ -1,11 +1,12 @@
 
-import React, { useEffect } from 'react';
+import React, { createRef, useEffect } from 'react';
 import { useQueryStringParser } from '../hooks/useQueryStringParser';
 import Index from './ArchPages/Index';
-import { navigate } from 'gatsby';
+import { navigate, withPrefix } from 'gatsby';
 import { redirect_uri } from '../hooks/useApi';
 import { enableSSO, StringUtils, workFlowBaseUrl } from '../Commmon/consts';
 
+import { Helmet } from "react-helmet";
 //import ReactDOM from 'react-dom';
 //import * as serviceWorker from './serviceWorker';
 
@@ -28,7 +29,14 @@ export default function Home() {
     }
   }, [userName, password])
 
+
+
+  const sRef = createRef<any>()
+
+
   return <div>
+ 
+
     {/* <Index /> */}
   </div>
 }

@@ -899,6 +899,578 @@ export class AttachmentsClient {
     }
 }
 
+export class AttachmentsManagerClient {
+    private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
+        this.http = http ? http : <any>window;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param businessKey (optional) 
+     * @param fileNameStartWith (optional) 
+     * @param fileNameEndWith (optional) 
+     * @param fileNameContains (optional) 
+     * @param offset (optional) 
+     * @param take (optional) 
+     * @param body (optional) 
+     * @return Success
+     */
+    queryFormAttachments(businessKey: string | undefined, fileNameStartWith: string | undefined, fileNameEndWith: string | undefined, fileNameContains: string | undefined, offset: number | undefined, take: number | undefined, body: string[] | undefined): Promise<AttachmentManagerItemTCollectionWithPagination> {
+        let url_ = this.baseUrl + "/api/AttachmentsManager/query?";
+        if (businessKey === null)
+            throw new Error("The parameter 'businessKey' cannot be null.");
+        else if (businessKey !== undefined)
+            url_ += "businessKey=" + encodeURIComponent("" + businessKey) + "&";
+        if (fileNameStartWith === null)
+            throw new Error("The parameter 'fileNameStartWith' cannot be null.");
+        else if (fileNameStartWith !== undefined)
+            url_ += "fileNameStartWith=" + encodeURIComponent("" + fileNameStartWith) + "&";
+        if (fileNameEndWith === null)
+            throw new Error("The parameter 'fileNameEndWith' cannot be null.");
+        else if (fileNameEndWith !== undefined)
+            url_ += "fileNameEndWith=" + encodeURIComponent("" + fileNameEndWith) + "&";
+        if (fileNameContains === null)
+            throw new Error("The parameter 'fileNameContains' cannot be null.");
+        else if (fileNameContains !== undefined)
+            url_ += "fileNameContains=" + encodeURIComponent("" + fileNameContains) + "&";
+        if (offset === null)
+            throw new Error("The parameter 'offset' cannot be null.");
+        else if (offset !== undefined)
+            url_ += "offset=" + encodeURIComponent("" + offset) + "&";
+        if (take === null)
+            throw new Error("The parameter 'take' cannot be null.");
+        else if (take !== undefined)
+            url_ += "take=" + encodeURIComponent("" + take) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <RequestInit>{
+            body: content_,
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processQueryFormAttachments(_response);
+        });
+    }
+
+    protected processQueryFormAttachments(response: Response): Promise<AttachmentManagerItemTCollectionWithPagination> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 404) {
+            return response.text().then((_responseText) => {
+            let result404: any = null;
+            let resultData404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result404 = ErrorModel.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+            });
+        } else if (status === 500) {
+            return response.text().then((_responseText) => {
+            let result500: any = null;
+            let resultData500 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result500 = ErrorModel.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result400 = ErrorModel.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = AttachmentManagerItemTCollectionWithPagination.fromJS(resultData200);
+            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<AttachmentManagerItemTCollectionWithPagination>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    getFormAttachmentById(id: string | undefined): Promise<FormAttachmentDto> {
+        let url_ = this.baseUrl + "/api/AttachmentsManager/id?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <RequestInit>{
+            method: "GET",
+            headers: {
+                "Accept": "text/plain"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetFormAttachmentById(_response);
+        });
+    }
+
+    protected processGetFormAttachmentById(response: Response): Promise<FormAttachmentDto> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 404) {
+            return response.text().then((_responseText) => {
+            let result404: any = null;
+            let resultData404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result404 = ErrorModel.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+            });
+        } else if (status === 500) {
+            return response.text().then((_responseText) => {
+            let result500: any = null;
+            let resultData500 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result500 = ErrorModel.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result400 = ErrorModel.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = FormAttachmentDto.fromJS(resultData200);
+            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<FormAttachmentDto>(<any>null);
+    }
+
+    /**
+     * @param businessKey (optional) 
+     * @param tag (optional) 
+     * @return Success
+     */
+    addArchAttachment(businessKey: string | undefined, tag: string | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/api/AttachmentsManager?";
+        if (businessKey === null)
+            throw new Error("The parameter 'businessKey' cannot be null.");
+        else if (businessKey !== undefined)
+            url_ += "businessKey=" + encodeURIComponent("" + businessKey) + "&";
+        if (tag === null)
+            throw new Error("The parameter 'tag' cannot be null.");
+        else if (tag !== undefined)
+            url_ += "tag=" + encodeURIComponent("" + tag) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <RequestInit>{
+            method: "POST",
+            headers: {
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processAddArchAttachment(_response);
+        });
+    }
+
+    protected processAddArchAttachment(response: Response): Promise<void> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 404) {
+            return response.text().then((_responseText) => {
+            let result404: any = null;
+            let resultData404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result404 = ErrorModel.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+            });
+        } else if (status === 500) {
+            return response.text().then((_responseText) => {
+            let result500: any = null;
+            let resultData500 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result500 = ErrorModel.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result400 = ErrorModel.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 200) {
+            return response.text().then((_responseText) => {
+            return;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<void>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @param rowVersion (optional) 
+     * @param userName (optional) 
+     * @param taskId (optional) 
+     * @return Success
+     */
+    updateAttachment(id: string | undefined, rowVersion: string | undefined, userName: string | undefined, taskId: string | undefined): Promise<string> {
+        let url_ = this.baseUrl + "/api/AttachmentsManager/wps?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        if (rowVersion === null)
+            throw new Error("The parameter 'rowVersion' cannot be null.");
+        else if (rowVersion !== undefined)
+            url_ += "rowVersion=" + encodeURIComponent("" + rowVersion) + "&";
+        if (userName === null)
+            throw new Error("The parameter 'userName' cannot be null.");
+        else if (userName !== undefined)
+            url_ += "userName=" + encodeURIComponent("" + userName) + "&";
+        if (taskId === null)
+            throw new Error("The parameter 'taskId' cannot be null.");
+        else if (taskId !== undefined)
+            url_ += "taskId=" + encodeURIComponent("" + taskId) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <RequestInit>{
+            method: "POST",
+            headers: {
+                "Accept": "text/plain"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processUpdateAttachment(_response);
+        });
+    }
+
+    protected processUpdateAttachment(response: Response): Promise<string> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 404) {
+            return response.text().then((_responseText) => {
+            let result404: any = null;
+            let resultData404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result404 = ErrorModel.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+            });
+        } else if (status === 500) {
+            return response.text().then((_responseText) => {
+            let result500: any = null;
+            let resultData500 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result500 = ErrorModel.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (resultData400) {
+                result400 = {} as any;
+                for (let key in resultData400) {
+                    if (resultData400.hasOwnProperty(key))
+                        (<any>result400)![key] = resultData400[key] ? ModelStateEntry.fromJS(resultData400[key]) : new ModelStateEntry();
+                }
+            }
+            else {
+                result400 = <any>null;
+            }
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return result200;
+            });
+        } else {
+            return response.text().then((_responseText) => {
+            let resultdefault: any = null;
+            let resultDatadefault = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            resultdefault = ProblemDetails.fromJS(resultDatadefault);
+            return throwException("Error", status, _responseText, _headers, resultdefault);
+            });
+        }
+    }
+
+    /**
+     * @return Success
+     */
+    deleteArchAttachment(attachmentId: string): Promise<void> {
+        let url_ = this.baseUrl + "/api/AttachmentsManager/{attachmentId}";
+        if (attachmentId === undefined || attachmentId === null)
+            throw new Error("The parameter 'attachmentId' must be defined.");
+        url_ = url_.replace("{attachmentId}", encodeURIComponent("" + attachmentId));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <RequestInit>{
+            method: "DELETE",
+            headers: {
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processDeleteArchAttachment(_response);
+        });
+    }
+
+    protected processDeleteArchAttachment(response: Response): Promise<void> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 404) {
+            return response.text().then((_responseText) => {
+            let result404: any = null;
+            let resultData404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result404 = ErrorModel.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+            });
+        } else if (status === 500) {
+            return response.text().then((_responseText) => {
+            let result500: any = null;
+            let resultData500 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result500 = ErrorModel.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result400 = ErrorModel.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 200) {
+            return response.text().then((_responseText) => {
+            return;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<void>(<any>null);
+    }
+
+    /**
+     * @param userName (optional) 
+     * @param proDefKey (optional) 
+     * @param businessKey (optional) 
+     * @param onlyShowNullTagAttachments (optional) 
+     * @return Success
+     */
+    downloadAllAttachments(userName: string | undefined, proDefKey: string | undefined, businessKey: string | undefined, onlyShowNullTagAttachments: boolean | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/api/AttachmentsManager/DownloadAllAttachments?";
+        if (userName === null)
+            throw new Error("The parameter 'userName' cannot be null.");
+        else if (userName !== undefined)
+            url_ += "userName=" + encodeURIComponent("" + userName) + "&";
+        if (proDefKey === null)
+            throw new Error("The parameter 'proDefKey' cannot be null.");
+        else if (proDefKey !== undefined)
+            url_ += "proDefKey=" + encodeURIComponent("" + proDefKey) + "&";
+        if (businessKey === null)
+            throw new Error("The parameter 'businessKey' cannot be null.");
+        else if (businessKey !== undefined)
+            url_ += "businessKey=" + encodeURIComponent("" + businessKey) + "&";
+        if (onlyShowNullTagAttachments === null)
+            throw new Error("The parameter 'onlyShowNullTagAttachments' cannot be null.");
+        else if (onlyShowNullTagAttachments !== undefined)
+            url_ += "onlyShowNullTagAttachments=" + encodeURIComponent("" + onlyShowNullTagAttachments) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <RequestInit>{
+            method: "GET",
+            headers: {
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processDownloadAllAttachments(_response);
+        });
+    }
+
+    protected processDownloadAllAttachments(response: Response): Promise<void> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 404) {
+            return response.text().then((_responseText) => {
+            let result404: any = null;
+            let resultData404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result404 = ErrorModel.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+            });
+        } else if (status === 500) {
+            return response.text().then((_responseText) => {
+            let result500: any = null;
+            let resultData500 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result500 = ErrorModel.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result400 = ErrorModel.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 200) {
+            return response.text().then((_responseText) => {
+            return;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<void>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    takeRedHeat(body: TaskRedHatViewModel | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/api/AttachmentsManager/TakeRedHeat";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <RequestInit>{
+            body: content_,
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processTakeRedHeat(_response);
+        });
+    }
+
+    protected processTakeRedHeat(response: Response): Promise<void> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 404) {
+            return response.text().then((_responseText) => {
+            let result404: any = null;
+            let resultData404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result404 = ErrorModel.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+            });
+        } else if (status === 500) {
+            return response.text().then((_responseText) => {
+            let result500: any = null;
+            let resultData500 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result500 = ErrorModel.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result400 = ErrorModel.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 200) {
+            return response.text().then((_responseText) => {
+            return;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<void>(<any>null);
+    }
+
+    /**
+     * @param order (optional) 
+     * @return Success
+     */
+    updateAttachmentOrder(id: string, order: number | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/api/AttachmentsManager/order/{id}?";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        if (order === null)
+            throw new Error("The parameter 'order' cannot be null.");
+        else if (order !== undefined)
+            url_ += "order=" + encodeURIComponent("" + order) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <RequestInit>{
+            method: "PUT",
+            headers: {
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processUpdateAttachmentOrder(_response);
+        });
+    }
+
+    protected processUpdateAttachmentOrder(response: Response): Promise<void> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 404) {
+            return response.text().then((_responseText) => {
+            let result404: any = null;
+            let resultData404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result404 = ErrorModel.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+            });
+        } else if (status === 500) {
+            return response.text().then((_responseText) => {
+            let result500: any = null;
+            let resultData500 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result500 = ErrorModel.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            let resultData400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result400 = ErrorModel.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status === 200) {
+            return response.text().then((_responseText) => {
+            return;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<void>(<any>null);
+    }
+}
+
 export class AttachmentsNewClient {
     private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
     private baseUrl: string;
@@ -3118,14 +3690,13 @@ export class FlowProcessInstancesClient {
     }
 
     /**
-     * 监控历史示例
      * @param skip (optional) 
      * @param pageSize (optional) 
      * @param titleKeyWord (optional) 
      * @param startDateTime (optional) 
      * @param endDateTime (optional) 
-     * @param onlyShowFinishedFlows (optional) 只显示已经结束的流程
-     * @param drafterUserName (optional) 创建者用户名
+     * @param onlyShowFinishedFlows (optional) 
+     * @param drafterUserName (optional) 
      * @param drafterName (optional) 
      * @param archNoLike (optional) 
      * @param body (optional) 
@@ -12603,6 +13174,39 @@ export class ValuesClient {
     /**
      * @return Success
      */
+    text(): Promise<void> {
+        let url_ = this.baseUrl + "/qq";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <RequestInit>{
+            method: "GET",
+            headers: {
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processText(_response);
+        });
+    }
+
+    protected processText(response: Response): Promise<void> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            return;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
     get(): Promise<void> {
         let url_ = this.baseUrl + "/api/Values/arch";
         url_ = url_.replace(/[?&]$/, "");
@@ -13806,6 +14410,122 @@ export interface IAttachment {
     id?: string | undefined;
     name?: string | undefined;
     size?: number;
+}
+
+export class AttachmentManagerItem implements IAttachmentManagerItem {
+    id?: string | undefined;
+    businessKey?: string | undefined;
+    originFileName?: string | undefined;
+    humanizeBytesLength?: string | undefined;
+    formTitle?: string | undefined;
+    processDefKey?: string | undefined;
+    processDefName?: string | undefined;
+    createDateTimeFormat?: string | undefined;
+    displayDepartment?: string | undefined;
+
+    constructor(data?: IAttachmentManagerItem) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.businessKey = _data["businessKey"];
+            this.originFileName = _data["originFileName"];
+            this.humanizeBytesLength = _data["humanizeBytesLength"];
+            this.formTitle = _data["formTitle"];
+            this.processDefKey = _data["processDefKey"];
+            this.processDefName = _data["processDefName"];
+            this.createDateTimeFormat = _data["createDateTimeFormat"];
+            this.displayDepartment = _data["displayDepartment"];
+        }
+    }
+
+    static fromJS(data: any): AttachmentManagerItem {
+        data = typeof data === 'object' ? data : {};
+        let result = new AttachmentManagerItem();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["businessKey"] = this.businessKey;
+        data["originFileName"] = this.originFileName;
+        data["humanizeBytesLength"] = this.humanizeBytesLength;
+        data["formTitle"] = this.formTitle;
+        data["processDefKey"] = this.processDefKey;
+        data["processDefName"] = this.processDefName;
+        data["createDateTimeFormat"] = this.createDateTimeFormat;
+        data["displayDepartment"] = this.displayDepartment;
+        return data; 
+    }
+}
+
+export interface IAttachmentManagerItem {
+    id?: string | undefined;
+    businessKey?: string | undefined;
+    originFileName?: string | undefined;
+    humanizeBytesLength?: string | undefined;
+    formTitle?: string | undefined;
+    processDefKey?: string | undefined;
+    processDefName?: string | undefined;
+    createDateTimeFormat?: string | undefined;
+    displayDepartment?: string | undefined;
+}
+
+export class AttachmentManagerItemTCollectionWithPagination implements IAttachmentManagerItemTCollectionWithPagination {
+    value?: AttachmentManagerItem[] | undefined;
+    total?: number;
+
+    constructor(data?: IAttachmentManagerItemTCollectionWithPagination) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["value"])) {
+                this.value = [] as any;
+                for (let item of _data["value"])
+                    this.value!.push(AttachmentManagerItem.fromJS(item));
+            }
+            this.total = _data["total"];
+        }
+    }
+
+    static fromJS(data: any): AttachmentManagerItemTCollectionWithPagination {
+        data = typeof data === 'object' ? data : {};
+        let result = new AttachmentManagerItemTCollectionWithPagination();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.value)) {
+            data["value"] = [];
+            for (let item of this.value)
+                data["value"].push(item.toJSON());
+        }
+        data["total"] = this.total;
+        return data; 
+    }
+}
+
+export interface IAttachmentManagerItemTCollectionWithPagination {
+    value?: AttachmentManagerItem[] | undefined;
+    total?: number;
 }
 
 export class BusinessForm implements IBusinessForm {
