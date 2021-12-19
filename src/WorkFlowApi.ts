@@ -329,7 +329,6 @@ export class AttachmentsClient {
     }
 
     /**
-     * 旧的OA能否编辑附件
      * @param taskId (optional) 
      * @return Success
      */
@@ -372,11 +371,10 @@ export class AttachmentsClient {
     }
 
     /**
-     * 获取附件列表
      * @param businessKey (optional) 
      * @param taskId (optional) 
      * @param isOldOAArchMonitor (optional) 
-     * @param onlyShowNullTagAttachments (optional) 只显示空标记附件
+     * @param onlyShowNullTagAttachments (optional) 
      * @return Success
      */
     getFormAttachments(businessKey: string | undefined, taskId: string | undefined, isOldOAArchMonitor: boolean | undefined, onlyShowNullTagAttachments: boolean | undefined): Promise<FormAttachmentDto[]> {
@@ -437,9 +435,8 @@ export class AttachmentsClient {
     }
 
     /**
-     * 上传附件
      * @param businessKey (optional) 
-     * @param tag (optional) 自定义标记
+     * @param tag (optional) 
      * @return Success
      */
     addArchAttachment(businessKey: string | undefined, tag: string | undefined): Promise<void> {
@@ -481,7 +478,6 @@ export class AttachmentsClient {
     }
 
     /**
-     * 获取附件上传下载地址
      * @param downloadUrl (optional) 
      * @return Success
      */
@@ -524,7 +520,6 @@ export class AttachmentsClient {
     }
 
     /**
-     * 获取附件根据Id
      * @param id (optional) 
      * @return Success
      */
@@ -567,7 +562,6 @@ export class AttachmentsClient {
     }
 
     /**
-     * WPS修改附件后上传(新)
      * @param id (optional) 
      * @return Success
      */
@@ -610,7 +604,6 @@ export class AttachmentsClient {
     }
 
     /**
-     * WPS修改附件后上传
      * @param id (optional) 
      * @param rowVersion (optional) 
      * @param userName (optional) 
@@ -686,7 +679,6 @@ export class AttachmentsClient {
     }
 
     /**
-     * 删除附件
      * @return Success
      */
     deleteArchAttachment(attachmentId: string): Promise<void> {
@@ -723,7 +715,6 @@ export class AttachmentsClient {
     }
 
     /**
-     * 下载附件
      * @param showRevision (optional) 
      * @return Success
      */
@@ -818,7 +809,6 @@ export class AttachmentsClient {
     }
 
     /**
-     * 套红头
      * @param body (optional) 
      * @return Success
      */
@@ -857,7 +847,6 @@ export class AttachmentsClient {
     }
 
     /**
-     * 更新附件顺序
      * @param order (optional) 
      * @return Success
      */
@@ -1482,7 +1471,6 @@ export class AttachmentsNewClient {
     }
 
     /**
-     * 获取附件列表
      * @param businessKey (optional) 
      * @param oldOATaskId (optional) 
      * @return Success
@@ -1537,7 +1525,6 @@ export class AttachmentsNewClient {
     }
 
     /**
-     * 获取附件根据Id
      * @param id (optional) 
      * @return Success
      */
@@ -1580,7 +1567,6 @@ export class AttachmentsNewClient {
     }
 
     /**
-     * WPS修改附件后上传
      * @return Success
      */
     updateAttachment(id: string): Promise<string> {
@@ -1639,7 +1625,6 @@ export class AttachmentsNewClient {
     }
 
     /**
-     * 下载附件
      * @return Success
      */
     download(id: string): Promise<void> {
@@ -1676,7 +1661,6 @@ export class AttachmentsNewClient {
     }
 
     /**
-     * 上传或修改附件
      * @param businessKey (optional) 
      * @param taskId (optional) 
      * @param formFile (optional) 
@@ -2117,7 +2101,6 @@ export class DepartmentsClient {
     }
 
     /**
-     * 获取部门数组
      * @param organizationId (optional) 
      * @return Success
      */
@@ -2167,7 +2150,6 @@ export class DepartmentsClient {
     }
 
     /**
-     * 获取部门树
      * @param organizationId (optional) 
      * @return Success
      */
@@ -2217,7 +2199,6 @@ export class DepartmentsClient {
     }
 
     /**
-     * 创建部门
      * @param body (optional) 
      * @return Success
      */
@@ -2256,7 +2237,6 @@ export class DepartmentsClient {
     }
 
     /**
-     * 根据部门Id获取部门
      * @return Success
      */
     getDepartmentById(id: string): Promise<DepartmentViewModel> {
@@ -2297,7 +2277,6 @@ export class DepartmentsClient {
     }
 
     /**
-     * 更新部门
      * @param body (optional) 
      * @return Success
      */
@@ -2364,7 +2343,6 @@ export class DepartmentsClient {
     }
 
     /**
-     * 删除部门
      * @return Success
      */
     deleteDepartment(id: string): Promise<void> {
@@ -2401,7 +2379,6 @@ export class DepartmentsClient {
     }
 
     /**
-     * 部门下的用户
      * @return Success
      */
     getUsersOfDepartmentId(id: string): Promise<UsersOfDepartmentDto[]> {
@@ -2449,7 +2426,6 @@ export class DepartmentsClient {
     }
 
     /**
-     * 添加用户到部门
      * @param body (optional) 
      * @return Success
      */
@@ -2516,7 +2492,6 @@ export class DepartmentsClient {
     }
 
     /**
-     * 部门下的用户
      * @param name (optional) 
      * @return Success
      */
@@ -2566,7 +2541,6 @@ export class DepartmentsClient {
     }
 
     /**
-     * 从部门中移除用户
      * @return Success
      */
     removeUserFromDepartment(id: string, userId: string): Promise<void> {
@@ -2624,7 +2598,6 @@ export class DepartmentsClient {
     }
 
     /**
-     * 查询用户(带部门和职位信息)
      * @param skip (optional) 
      * @param take (optional) 
      * @param departmentName (optional) 
@@ -2704,7 +2677,6 @@ export class DepartmentsClient {
     }
 
     /**
-     * 更新用户在部门内的信息
      * @param body (optional) 
      * @return Success
      */
@@ -2831,7 +2803,6 @@ export class DeploymentClient {
     }
 
     /**
-     * engine-rest/version
      * @return Success
      */
     getEngineVersion(): Promise<void> {
@@ -3162,7 +3133,6 @@ export class EmailsClient {
     }
 
     /**
-     * 获取信箱列表
      * @param skip (optional) 
      * @param take (optional) 
      * @param isRead (optional) 
@@ -3239,7 +3209,6 @@ export class EmailsClient {
     }
 
     /**
-     * 获取邮件详情
      * @return Success
      */
     getDetail(id: string): Promise<ListItemWithBody> {
@@ -3301,7 +3270,6 @@ export class EmailsClient {
     }
 
     /**
-     * 下载附件
      * @return Success
      */
     downloadAttachement(emailId: string, attarchmentId: string): Promise<void> {
@@ -3373,7 +3341,6 @@ export class FlowActivityAuthorizationsClient {
     }
 
     /**
-     * 获取流程
      * @param userName (optional) 
      * @return Success
      */
@@ -3510,7 +3477,6 @@ export class FlowProcessInstancesClient {
     }
 
     /**
-     * 通过业务编号获取待办任务
      * @param businessKey (optional) 
      * @return Success
      */
@@ -3581,7 +3547,6 @@ export class FlowProcessInstancesClient {
     }
 
     /**
-     * 监控历史示例
      * @param year (optional) 
      * @param skip (optional) 
      * @param pageSize (optional) 
@@ -3589,8 +3554,8 @@ export class FlowProcessInstancesClient {
      * @param titleKeyWord (optional) 
      * @param startDateTime (optional) 
      * @param endDateTime (optional) 
-     * @param onlyShowFinishedFlows (optional) 只显示已经结束的流程
-     * @param drafterUserName (optional) 创建者用户名
+     * @param onlyShowFinishedFlows (optional) 
+     * @param drafterUserName (optional) 
      * @param drafterName (optional) 
      * @return Success
      */
@@ -3699,10 +3664,11 @@ export class FlowProcessInstancesClient {
      * @param drafterUserName (optional) 
      * @param drafterName (optional) 
      * @param archNoLike (optional) 
+     * @param departmentLike (optional) 
      * @param body (optional) 
      * @return Success
      */
-    getHistoryProcesseInstances(skip: number | undefined, pageSize: number | undefined, titleKeyWord: string | undefined, startDateTime: Date | undefined, endDateTime: Date | undefined, onlyShowFinishedFlows: boolean | undefined, drafterUserName: string | undefined, drafterName: string | undefined, archNoLike: string | undefined, body: string[] | undefined): Promise<HistoryProcesseInstancePaginationResult> {
+    getHistoryProcesseInstances(skip: number | undefined, pageSize: number | undefined, titleKeyWord: string | undefined, startDateTime: Date | undefined, endDateTime: Date | undefined, onlyShowFinishedFlows: boolean | undefined, drafterUserName: string | undefined, drafterName: string | undefined, archNoLike: string | undefined, departmentLike: string | undefined, body: string[] | undefined): Promise<HistoryProcesseInstancePaginationResult> {
         let url_ = this.baseUrl + "/api/FlowProcessInstances/history?";
         if (skip === null)
             throw new Error("The parameter 'skip' cannot be null.");
@@ -3740,6 +3706,10 @@ export class FlowProcessInstancesClient {
             throw new Error("The parameter 'archNoLike' cannot be null.");
         else if (archNoLike !== undefined)
             url_ += "archNoLike=" + encodeURIComponent("" + archNoLike) + "&";
+        if (departmentLike === null)
+            throw new Error("The parameter 'departmentLike' cannot be null.");
+        else if (departmentLike !== undefined)
+            url_ += "departmentLike=" + encodeURIComponent("" + departmentLike) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -3798,7 +3768,6 @@ export class FlowProcessInstancesClient {
     }
 
     /**
-     * 启动处理实例
      * @param body (optional) 
      * @return Success
      */
@@ -3862,7 +3831,6 @@ export class FlowProcessInstancesClient {
     }
 
     /**
-     * 完成任务
      * @param body (optional) 
      * @return Success
      */
@@ -3922,7 +3890,6 @@ export class FlowProcessInstancesClient {
     }
 
     /**
-     * 完成任务
      * @param body (optional) 
      * @return Success
      */
@@ -3982,7 +3949,6 @@ export class FlowProcessInstancesClient {
     }
 
     /**
-     * 删除处理实例
      * @return Success
      */
     deleteProcessInstancce(processInstanceId: string): Promise<void> {
@@ -4163,14 +4129,13 @@ export class FlowProcessInstancesClient {
     }
 
     /**
-     * 监控历史示例
      * @param skip (optional) 
      * @param pageSize (optional) 
      * @param titleKeyWord (optional) 
      * @param startDateTime (optional) 
      * @param endDateTime (optional) 
-     * @param onlyShowFinishedFlows (optional) 只显示已经结束的流程
-     * @param drafterUserName (optional) 创建者用户名
+     * @param onlyShowFinishedFlows (optional) 
+     * @param drafterUserName (optional) 
      * @param drafterName (optional) 
      * @param body (optional) 
      * @return Success
@@ -4278,7 +4243,6 @@ export class FormAttachmentsClient {
     }
 
     /**
-     * 旧的OA能否编辑附件
      * @param taskId (optional) 
      * @return Success
      */
@@ -4342,11 +4306,10 @@ export class FormAttachmentsClient {
     }
 
     /**
-     * 获取附件列表
      * @param businessKey (optional) 
      * @param taskId (optional) 
      * @param isOldOAArchMonitor (optional) 
-     * @param onlyShowNullTagAttachments (optional) 只显示空标记附件
+     * @param onlyShowNullTagAttachments (optional) 
      * @return Success
      */
     getFormAttachments(businessKey: string | undefined, taskId: string | undefined, isOldOAArchMonitor: boolean | undefined, onlyShowNullTagAttachments: boolean | undefined): Promise<FormAttachmentDto[]> {
@@ -4428,9 +4391,8 @@ export class FormAttachmentsClient {
     }
 
     /**
-     * 上传附件
      * @param businessKey (optional) 
-     * @param tag (optional) 自定义标记
+     * @param tag (optional) 
      * @return Success
      */
     addArchAttachment(businessKey: string | undefined, tag: string | undefined): Promise<void> {
@@ -4493,7 +4455,6 @@ export class FormAttachmentsClient {
     }
 
     /**
-     * 获取附件上传下载地址
      * @param downloadUrl (optional) 
      * @return Success
      */
@@ -4557,7 +4518,6 @@ export class FormAttachmentsClient {
     }
 
     /**
-     * 获取附件根据Id
      * @param id (optional) 
      * @return Success
      */
@@ -4621,7 +4581,6 @@ export class FormAttachmentsClient {
     }
 
     /**
-     * WPS修改附件后上传(新)
      * @param id (optional) 
      * @return Success
      */
@@ -4685,7 +4644,6 @@ export class FormAttachmentsClient {
     }
 
     /**
-     * WPS修改附件后上传
      * @param id (optional) 
      * @param rowVersion (optional) 
      * @param userName (optional) 
@@ -4775,7 +4733,6 @@ export class FormAttachmentsClient {
     }
 
     /**
-     * 删除附件
      * @return Success
      */
     deleteArchAttachment(attachmentId: string): Promise<void> {
@@ -4833,7 +4790,6 @@ export class FormAttachmentsClient {
     }
 
     /**
-     * 下载附件
      * @param showRevision (optional) 
      * @return Success
      */
@@ -4970,7 +4926,6 @@ export class FormAttachmentsClient {
     }
 
     /**
-     * 套红头
      * @param body (optional) 
      * @return Success
      */
@@ -5030,7 +4985,6 @@ export class FormAttachmentsClient {
     }
 
     /**
-     * 更新附件顺序
      * @param order (optional) 
      * @return Success
      */
@@ -5386,7 +5340,6 @@ export class HistoryFlowsClient {
     }
 
     /**
-     * 更新状态
      * @param id (optional) 
      * @param state (optional) 
      * @return Success
@@ -5884,7 +5837,6 @@ export class MessagesClient {
     }
 
     /**
-     * 发送短信
      * @param body (optional) 
      * @return Success
      */
@@ -5934,7 +5886,6 @@ export class OpinionTypesClient {
     }
 
     /**
-     * 获取意见类型
      * @param prodefKey (optional) 
      * @return Success
      */
@@ -6293,7 +6244,6 @@ export class OrganizationsClient {
     }
 
     /**
-     * 根据id获取组织
      * @return Success
      */
     getById(id: number): Promise<Organization> {
@@ -6730,7 +6680,6 @@ export class PermissonsClient {
     }
 
     /**
-     * 获取所有权限
      * @param skip (optional) 
      * @param take (optional) 
      * @param search (optional) 
@@ -6783,7 +6732,6 @@ export class PermissonsClient {
     }
 
     /**
-     * 创建或者更新权限
      * @param body (optional) 
      * @return Success
      */
@@ -6840,7 +6788,6 @@ export class PermissonsClient {
     }
 
     /**
-     * 根据id获取权限
      * @return Success
      */
     getPermissonById(id: string): Promise<Permisson> {
@@ -6881,7 +6828,6 @@ export class PermissonsClient {
     }
 
     /**
-     * 删除权限
      * @return Success
      */
     deletePermisson(id: string): Promise<void> {
@@ -6947,7 +6893,6 @@ export class ProcessDefsClient {
     }
 
     /**
-     * 获取处理定义列表
      * @param includeParseUserTasks (optional) 
      * @return Success
      */
@@ -7035,7 +6980,6 @@ export class ProcessDefsClient {
     }
 
     /**
-     * 获取处理定义xml列表
      * @return Success
      */
     getProcessDefsWithXml(): Promise<string[]> {
@@ -7080,7 +7024,6 @@ export class ProcessDefsClient {
     }
 
     /**
-     * 通过key获取处理定义
      * @return Success
      */
     getProcessDefByKey(key: string): Promise<ProcessDefViewModel> {
@@ -7468,7 +7411,6 @@ export class ProcessInstancesClient {
     }
 
     /**
-     * 通过业务编号获取待办任务
      * @param businessKey (optional) 
      * @return Success
      */
@@ -7518,7 +7460,6 @@ export class ProcessInstancesClient {
     }
 
     /**
-     * 监控历史示例
      * @param year (optional) 
      * @param skip (optional) 
      * @param pageSize (optional) 
@@ -7526,8 +7467,8 @@ export class ProcessInstancesClient {
      * @param titleKeyWord (optional) 
      * @param startDateTime (optional) 
      * @param endDateTime (optional) 
-     * @param onlyShowFinishedFlows (optional) 只显示已经结束的流程
-     * @param drafterUserName (optional) 创建者用户名
+     * @param onlyShowFinishedFlows (optional) 
+     * @param drafterUserName (optional) 
      * @param drafterName (optional) 
      * @return Success
      */
@@ -7606,14 +7547,13 @@ export class ProcessInstancesClient {
     }
 
     /**
-     * 监控历史示例
      * @param skip (optional) 
      * @param pageSize (optional) 
      * @param titleKeyWord (optional) 
      * @param startDateTime (optional) 
      * @param endDateTime (optional) 
-     * @param onlyShowFinishedFlows (optional) 只显示已经结束的流程
-     * @param drafterUserName (optional) 创建者用户名
+     * @param onlyShowFinishedFlows (optional) 
+     * @param drafterUserName (optional) 
      * @param drafterName (optional) 
      * @param body (optional) 
      * @return Success
@@ -7689,7 +7629,6 @@ export class ProcessInstancesClient {
     }
 
     /**
-     * 启动处理实例
      * @param body (optional) 
      * @return Success
      */
@@ -7732,7 +7671,6 @@ export class ProcessInstancesClient {
     }
 
     /**
-     * 完成任务
      * @param body (optional) 
      * @return Success
      */
@@ -7771,7 +7709,6 @@ export class ProcessInstancesClient {
     }
 
     /**
-     * 完成任务
      * @param body (optional) 
      * @return Success
      */
@@ -7810,7 +7747,6 @@ export class ProcessInstancesClient {
     }
 
     /**
-     * 删除处理实例
      * @return Success
      */
     deleteProcessInstancce(processInstanceId: string): Promise<void> {
@@ -7901,7 +7837,6 @@ export class QueryTasksClient {
     }
 
     /**
-     * 待办列表
      * @param skip (optional) 
      * @param pageSize (optional) 
      * @param isJustCreated (optional) 
@@ -7985,7 +7920,6 @@ export class QueryTasksClient {
     }
 
     /**
-     * 获取未办数量
      * @param isJustCreated (optional) 
      * @param body (optional) 
      * @return Success
@@ -8061,7 +7995,6 @@ export class QueryTasksClient {
     }
 
     /**
-     * 获取已办
      * @param skip (optional) 
      * @param take (optional) 
      * @param flow (optional) 
@@ -8135,7 +8068,6 @@ export class QueryTasksClient {
     }
 
     /**
-     * 获取意见
      * @param processDefKey (optional) 
      * @return Success
      */
@@ -8209,7 +8141,6 @@ export class QueryTasksClient {
     }
 
     /**
-     * 撤回
      * @return Success
      */
     cancelAllForActivity(taskId: string): Promise<void> {
@@ -8324,7 +8255,6 @@ export class QueryTasksClient {
     }
 
     /**
-     * 获取表单
      * @param mode (optional) 
      * @param taskId (optional) 
      * @param businessKey (optional) 
@@ -8398,7 +8328,6 @@ export class QueryTasksClient {
     }
 
     /**
-     * 获取办文过程
      * @return Success
      */
     getDealProcesses(businessKey: string): Promise<DealProcesseViewModel[]> {
@@ -8467,11 +8396,10 @@ export class QueryTasksClient {
     }
 
     /**
-     * 获取待办办列表数量
      * @param userName (optional) 
      * @param isJustCreated (optional) 
      * @param title (optional) 
-     * @param archType (optional) 公文类型 办件、阅件
+     * @param archType (optional) 
      * @param body (optional) 
      * @return Success
      */
@@ -8551,13 +8479,12 @@ export class QueryTasksClient {
     }
 
     /**
-     * 获取待办列表
      * @param userName (optional) 
      * @param skip (optional) 
      * @param take (optional) 
      * @param isJustCreated (optional) 
      * @param title (optional) 
-     * @param archType (optional) 公文类型 办件、阅件
+     * @param archType (optional) 
      * @param body (optional) 
      * @return Success
      */
@@ -8645,7 +8572,6 @@ export class QueryTasksClient {
     }
 
     /**
-     * 获取已办列表
      * @param userName (optional) 
      * @param skip (optional) 
      * @param take (optional) 
@@ -8729,7 +8655,6 @@ export class QueryTasksClient {
     }
 
     /**
-     * 暂存
      * @param body (optional) 
      * @return Success
      */
@@ -8930,7 +8855,6 @@ export class QueryTasksClient {
     }
 
     /**
-     * 根据流程步骤获取用户列表
      * @param taskId (optional) 
      * @param targetActvityId (optional) 
      * @param dispose (optional) 
@@ -9011,7 +8935,6 @@ export class QueryTasksClient {
     }
 
     /**
-     * 最新的已办任务
      * @param skip (optional) 
      * @param take (optional) 
      * @param userName (optional) 
@@ -9125,7 +9048,6 @@ export class QueryTasksClient {
     }
 
     /**
-     * 最新的已办任务
      * @param skip (optional) 
      * @param take (optional) 
      * @param userName (optional) 
@@ -9478,7 +9400,6 @@ export class RolesClient {
     }
 
     /**
-     * 查询角色列表
      * @param skip (optional) 
      * @param take (optional) 
      * @param search (optional) 
@@ -9527,7 +9448,6 @@ export class RolesClient {
     }
 
     /**
-     * 创建角色
      * @param body (optional) 
      * @return Success
      */
@@ -9566,7 +9486,6 @@ export class RolesClient {
     }
 
     /**
-     * 查询角色列表
      * @param skip (optional) 
      * @param take (optional) 
      * @param search (optional) 
@@ -9619,7 +9538,6 @@ export class RolesClient {
     }
 
     /**
-     * 通过id获取角色
      * @return Success
      */
     getRoleById(id: string): Promise<ApplicationRole> {
@@ -9660,7 +9578,6 @@ export class RolesClient {
     }
 
     /**
-     * 删除角色
      * @return Success
      */
     deleteRoleById(id: string): Promise<void> {
@@ -9697,7 +9614,6 @@ export class RolesClient {
     }
 
     /**
-     * 更新角色
      * @param body (optional) 
      * @return Success
      */
@@ -9739,7 +9655,6 @@ export class RolesClient {
     }
 
     /**
-     * 获取角色拥有的权限
      * @return Success
      */
     getRolePermissons(roleId: string): Promise<Permisson[]> {
@@ -9787,7 +9702,6 @@ export class RolesClient {
     }
 
     /**
-     * 重新分配权限到角色
      * @param body (optional) 
      * @return Success
      */
@@ -9913,7 +9827,6 @@ export class RuntimeFlowsClient {
     }
 
     /**
-     * 删除处理实例
      * @param body (optional) 
      * @return Success
      */
@@ -9987,7 +9900,6 @@ export class TasksClient {
     }
 
     /**
-     * 待办列表
      * @param skip (optional) 
      * @param pageSize (optional) 
      * @param isJustCreated (optional) 
@@ -10050,7 +9962,6 @@ export class TasksClient {
     }
 
     /**
-     * 获取未办数量
      * @param isJustCreated (optional) 
      * @param body (optional) 
      * @return Success
@@ -10105,7 +10016,6 @@ export class TasksClient {
     }
 
     /**
-     * 获取已办
      * @param skip (optional) 
      * @param take (optional) 
      * @param flow (optional) 
@@ -10158,7 +10068,6 @@ export class TasksClient {
     }
 
     /**
-     * 获取意见
      * @param processDefKey (optional) 
      * @return Success
      */
@@ -10211,7 +10120,6 @@ export class TasksClient {
     }
 
     /**
-     * 撤回
      * @return Success
      */
     cancelAllForActivity(taskId: string): Promise<void> {
@@ -10284,7 +10192,6 @@ export class TasksClient {
     }
 
     /**
-     * 获取表单
      * @param mode (optional) 
      * @param taskId (optional) 
      * @param businessKey (optional) 
@@ -10337,7 +10244,6 @@ export class TasksClient {
     }
 
     /**
-     * 获取办文过程
      * @return Success
      */
     getDealProcesses(businessKey: string): Promise<DealProcesseViewModel[]> {
@@ -10385,11 +10291,10 @@ export class TasksClient {
     }
 
     /**
-     * 获取待办办列表数量
      * @param userName (optional) 
      * @param isJustCreated (optional) 
      * @param title (optional) 
-     * @param archType (optional) 公文类型 办件、阅件
+     * @param archType (optional) 
      * @param body (optional) 
      * @return Success
      */
@@ -10448,13 +10353,12 @@ export class TasksClient {
     }
 
     /**
-     * 获取待办列表
      * @param userName (optional) 
      * @param skip (optional) 
      * @param take (optional) 
      * @param isJustCreated (optional) 
      * @param title (optional) 
-     * @param archType (optional) 公文类型 办件、阅件
+     * @param archType (optional) 
      * @param body (optional) 
      * @return Success
      */
@@ -10521,7 +10425,6 @@ export class TasksClient {
     }
 
     /**
-     * 获取已办列表
      * @param userName (optional) 
      * @param skip (optional) 
      * @param take (optional) 
@@ -10584,7 +10487,6 @@ export class TasksClient {
     }
 
     /**
-     * 暂存
      * @param body (optional) 
      * @return Success
      */
@@ -10722,7 +10624,6 @@ export class TasksClient {
     }
 
     /**
-     * 根据流程步骤获取用户列表
      * @param taskId (optional) 
      * @param targetActvityId (optional) 
      * @param dispose (optional) 
@@ -10782,7 +10683,6 @@ export class TasksClient {
     }
 
     /**
-     * 最新的已办任务
      * @param skip (optional) 
      * @param take (optional) 
      * @param userName (optional) 
@@ -11281,7 +11181,6 @@ export class UserGroupsClient {
     }
 
     /**
-     * 获取用户组
      * @return Success
      */
     getUserGroups(): Promise<UserGroup[]> {
@@ -11326,7 +11225,6 @@ export class UserGroupsClient {
     }
 
     /**
-     * 创建用户组
      * @param body (optional) 
      * @return Success
      */
@@ -11365,7 +11263,6 @@ export class UserGroupsClient {
     }
 
     /**
-     * 根据用户组Id获取单个用户组
      * @return Success
      */
     getUserGroupById(id: number): Promise<UserGroup> {
@@ -11406,7 +11303,6 @@ export class UserGroupsClient {
     }
 
     /**
-     * 更新用户组
      * @param body (optional) 
      * @return Success
      */
@@ -11448,7 +11344,6 @@ export class UserGroupsClient {
     }
 
     /**
-     * 删除用户组
      * @return Success
      */
     deleteUserGroup(id: number): Promise<void> {
@@ -11485,7 +11380,6 @@ export class UserGroupsClient {
     }
 
     /**
-     * 获取组下用户
      * @return Success
      */
     getUsersOfUserGroup(id: number): Promise<UsersOfUserGroupDto[]> {
@@ -11533,7 +11427,6 @@ export class UserGroupsClient {
     }
 
     /**
-     * 添加用户到用户组
      * @param body (optional) 
      * @return Success
      */
@@ -11600,7 +11493,6 @@ export class UserGroupsClient {
     }
 
     /**
-     * 从用户组移除用户
      * @param body (optional) 
      * @return Success
      */
@@ -11642,7 +11534,6 @@ export class UserGroupsClient {
     }
 
     /**
-     * 更新用户在用户组内的排序
      * @param departmentId (optional) 
      * @param order (optional) 
      * @return Success
@@ -11703,7 +11594,6 @@ export class UserInfoClient {
     }
 
     /**
-     * 获取用户信息
      * @return Success
      */
     getUserInfo(): Promise<{ [key: string]: string; }> {
@@ -11875,7 +11765,6 @@ export class UsersClient {
     }
 
     /**
-     * 查询用户列表
      * @param skip (optional) 
      * @param take (optional) 
      * @param queryUserName (optional) 
@@ -11943,7 +11832,6 @@ export class UsersClient {
     }
 
     /**
-     * 创建用户
      * @param body (optional) 
      * @return Success
      */
@@ -11982,7 +11870,6 @@ export class UsersClient {
     }
 
     /**
-     * 通过用户名获取用户
      * @return Success
      */
     getUserByUserName(id: string): Promise<UserReply> {
@@ -12023,7 +11910,6 @@ export class UsersClient {
     }
 
     /**
-     * 通过id删除用户
      * @return Success
      */
     deleteUserById(id: string): Promise<void> {
@@ -12060,7 +11946,6 @@ export class UsersClient {
     }
 
     /**
-     * 更新用户
      * @param job (optional) 
      * @param body (optional) 
      * @return Success
@@ -12107,7 +11992,6 @@ export class UsersClient {
     }
 
     /**
-     * 通过id获取用户
      * @return Success
      */
     getUserById(id: string): Promise<ApplicationUser> {
@@ -12188,7 +12072,6 @@ export class UsersClient {
     }
 
     /**
-     * 批量导入用户
      * @return Success
      */
     importUsersFromSteam(): Promise<void> {
@@ -12222,7 +12105,6 @@ export class UsersClient {
     }
 
     /**
-     * 获取Excel模板
      * @return Success
      */
     getUserExcel(): Promise<void> {
@@ -12256,7 +12138,6 @@ export class UsersClient {
     }
 
     /**
-     * 获取用户拥有的角色
      * @return Success
      */
     getRolesOfUser(userId: string): Promise<ApplicationRole[]> {
@@ -12304,7 +12185,6 @@ export class UsersClient {
     }
 
     /**
-     * 为用户分配角色
      * @param body (optional) 
      * @return Success
      */
@@ -12346,7 +12226,6 @@ export class UsersClient {
     }
 
     /**
-     * 删除用户角色
      * @param body (optional) 
      * @return Success
      */
@@ -12388,7 +12267,6 @@ export class UsersClient {
     }
 
     /**
-     * 获取用户声明
      * @return Success
      */
     getUserClaims(userId: string): Promise<ApplicationIdentityUserClaim[]> {
@@ -12436,7 +12314,6 @@ export class UsersClient {
     }
 
     /**
-     * 创建或者更新角色声明
      * @param body (optional) 
      * @return Success
      */
@@ -12478,7 +12355,6 @@ export class UsersClient {
     }
 
     /**
-     * 删除用户声明
      * @return Success
      */
     deleteUserClaim(userId: string, claimId: number): Promise<void> {
@@ -12518,7 +12394,6 @@ export class UsersClient {
     }
 
     /**
-     * 用户拥有的权限
      * @return Success
      */
     getPermissonsOfUser(userId: string): Promise<string[]> {
@@ -12566,7 +12441,6 @@ export class UsersClient {
     }
 
     /**
-     * 用户拥有的部门
      * @return Success
      */
     getUserDepartments(userId: string): Promise<Department[]> {
@@ -12625,7 +12499,6 @@ export class UserTaskClaimsClient {
     }
 
     /**
-     * 设置星标
      * @param businessKey (optional) 
      * @param star (optional) 
      * @return Success
@@ -12891,7 +12764,6 @@ export class UserTasksClient {
     }
 
     /**
-     * 完成任务(新引擎)
      * @param body (optional) 
      * @return Success
      */
@@ -12951,7 +12823,6 @@ export class UserTasksClient {
     }
 
     /**
-     * 根据业务编号获取运行的用户任务
      * @return Success
      */
     getRuntimeUserTaskByBusinessKey(businessKey: string): Promise<RuntimeUserTaskTaskTCollection> {
@@ -13013,7 +12884,6 @@ export class UserTasksClient {
     }
 
     /**
-     * 撤回
      * @param body (optional) 
      * @return Success
      */
@@ -13543,11 +13413,8 @@ export interface IActivityOutgoingUsersConfig {
     order?: number;
 }
 
-/** 为用户分配角色视图模型 */
 export class AddToRolesViewModel implements IAddToRolesViewModel {
-    /** 用户id */
     userId!: string;
-    /** 角色id列表 */
     roleIds!: string[];
 
     constructor(data?: IAddToRolesViewModel) {
@@ -13592,11 +13459,8 @@ export class AddToRolesViewModel implements IAddToRolesViewModel {
     }
 }
 
-/** 为用户分配角色视图模型 */
 export interface IAddToRolesViewModel {
-    /** 用户id */
     userId: string;
-    /** 角色id列表 */
     roleIds: string[];
 }
 
@@ -13966,29 +13830,20 @@ export interface IApplicationUser {
 
 export class AskForLeaveForm implements IAskForLeaveForm {
     id?: string | undefined;
-    /** 标题 */
     title?: string | undefined;
     userName?: string | undefined;
     userDisplayName?: string | undefined;
     userDepartment?: string | undefined;
-    /** 职务职级 */
     job?: string | undefined;
-    /** 参加工作时间 */
     startWorkDateTime?: string | undefined;
-    /** 休假类型 */
     type?: string | undefined;
-    /** 休假年度 */
     year?: number;
-    /** 批次 */
     batch?: string | undefined;
     beginDateTime?: string | undefined;
     endDateTime?: string | undefined;
     days?: number;
-    /** 休假去向 */
     address?: string | undefined;
-    /** 备注 */
     remark?: string | undefined;
-    /** 部门领导是否确认 */
     isDepartmentLeaderConfirm?: boolean;
     businessForm?: BusinessForm;
 
@@ -14055,29 +13910,20 @@ export class AskForLeaveForm implements IAskForLeaveForm {
 
 export interface IAskForLeaveForm {
     id?: string | undefined;
-    /** 标题 */
     title?: string | undefined;
     userName?: string | undefined;
     userDisplayName?: string | undefined;
     userDepartment?: string | undefined;
-    /** 职务职级 */
     job?: string | undefined;
-    /** 参加工作时间 */
     startWorkDateTime?: string | undefined;
-    /** 休假类型 */
     type?: string | undefined;
-    /** 休假年度 */
     year?: number;
-    /** 批次 */
     batch?: string | undefined;
     beginDateTime?: string | undefined;
     endDateTime?: string | undefined;
     days?: number;
-    /** 休假去向 */
     address?: string | undefined;
-    /** 备注 */
     remark?: string | undefined;
-    /** 部门领导是否确认 */
     isDepartmentLeaderConfirm?: boolean;
     businessForm?: BusinessForm;
 }
@@ -14532,12 +14378,14 @@ export class BusinessForm implements IBusinessForm {
     id?: number;
     businessKey?: string | undefined;
     externalSystemBusinessKey?: string | undefined;
+    externalSystemDepartment?: string | undefined;
     xmlFields?: string | undefined;
     fieldItems?: FieldItem[] | undefined;
     processDefId?: string | undefined;
     processDefKey?: string | undefined;
     processDefName?: string | undefined;
     title?: string | undefined;
+    titleFormat?: string | undefined;
     drafterUserName?: string | undefined;
     drafterName?: string | undefined;
     drafterDepartment?: string | undefined;
@@ -14565,6 +14413,7 @@ export class BusinessForm implements IBusinessForm {
             this.id = _data["id"];
             this.businessKey = _data["businessKey"];
             this.externalSystemBusinessKey = _data["externalSystemBusinessKey"];
+            this.externalSystemDepartment = _data["externalSystemDepartment"];
             this.xmlFields = _data["xmlFields"];
             if (Array.isArray(_data["fieldItems"])) {
                 this.fieldItems = [] as any;
@@ -14575,6 +14424,7 @@ export class BusinessForm implements IBusinessForm {
             this.processDefKey = _data["processDefKey"];
             this.processDefName = _data["processDefName"];
             this.title = _data["title"];
+            this.titleFormat = _data["titleFormat"];
             this.drafterUserName = _data["drafterUserName"];
             this.drafterName = _data["drafterName"];
             this.drafterDepartment = _data["drafterDepartment"];
@@ -14602,6 +14452,7 @@ export class BusinessForm implements IBusinessForm {
         data["id"] = this.id;
         data["businessKey"] = this.businessKey;
         data["externalSystemBusinessKey"] = this.externalSystemBusinessKey;
+        data["externalSystemDepartment"] = this.externalSystemDepartment;
         data["xmlFields"] = this.xmlFields;
         if (Array.isArray(this.fieldItems)) {
             data["fieldItems"] = [];
@@ -14612,6 +14463,7 @@ export class BusinessForm implements IBusinessForm {
         data["processDefKey"] = this.processDefKey;
         data["processDefName"] = this.processDefName;
         data["title"] = this.title;
+        data["titleFormat"] = this.titleFormat;
         data["drafterUserName"] = this.drafterUserName;
         data["drafterName"] = this.drafterName;
         data["drafterDepartment"] = this.drafterDepartment;
@@ -14632,12 +14484,14 @@ export interface IBusinessForm {
     id?: number;
     businessKey?: string | undefined;
     externalSystemBusinessKey?: string | undefined;
+    externalSystemDepartment?: string | undefined;
     xmlFields?: string | undefined;
     fieldItems?: FieldItem[] | undefined;
     processDefId?: string | undefined;
     processDefKey?: string | undefined;
     processDefName?: string | undefined;
     title?: string | undefined;
+    titleFormat?: string | undefined;
     drafterUserName?: string | undefined;
     drafterName?: string | undefined;
     drafterDepartment?: string | undefined;
@@ -14972,7 +14826,6 @@ export interface ICompleteTaskForReadOnlyForm {
     disposeItems?: DisposeItem[] | undefined;
 }
 
-/** 完成任务视图模型 */
 export class CompleteTaskViewModel implements ICompleteTaskViewModel {
     taskId?: string | undefined;
     opinion?: string | undefined;
@@ -15066,7 +14919,6 @@ export class CompleteTaskViewModel implements ICompleteTaskViewModel {
     }
 }
 
-/** 完成任务视图模型 */
 export interface ICompleteTaskViewModel {
     taskId?: string | undefined;
     opinion?: string | undefined;
@@ -15849,7 +15701,6 @@ export class DealProcesseViewModel implements IDealProcesseViewModel {
     opinion?: string | undefined;
     deteTime?: string | undefined;
     dispose?: string | undefined;
-    /** 签收时间 */
     assigneeDateTimeFormat?: string | undefined;
 
     constructor(data?: IDealProcesseViewModel) {
@@ -15900,7 +15751,6 @@ export interface IDealProcesseViewModel {
     opinion?: string | undefined;
     deteTime?: string | undefined;
     dispose?: string | undefined;
-    /** 签收时间 */
     assigneeDateTimeFormat?: string | undefined;
 }
 
@@ -16937,13 +16787,9 @@ export interface IFormAttachmentDto {
 export class FormDetailViewModel implements IFormDetailViewModel {
     taskId?: string | undefined;
     activityName?: string | undefined;
-    /** 流程是否结束 */
     isFlowFinished?: boolean;
-    /** 刚刚创建的？没有经过流程 */
     isJustCreated?: boolean | undefined;
-    /** 当前用户填写过意见 */
     curUserHasAnyOpinion?: boolean | undefined;
-    /** 暂存意见 */
     tempSaveOpinion?: string | undefined;
     form?: BusinessForm;
     canEditForm?: boolean;
@@ -16997,13 +16843,9 @@ export class FormDetailViewModel implements IFormDetailViewModel {
 export interface IFormDetailViewModel {
     taskId?: string | undefined;
     activityName?: string | undefined;
-    /** 流程是否结束 */
     isFlowFinished?: boolean;
-    /** 刚刚创建的？没有经过流程 */
     isJustCreated?: boolean | undefined;
-    /** 当前用户填写过意见 */
     curUserHasAnyOpinion?: boolean | undefined;
-    /** 暂存意见 */
     tempSaveOpinion?: string | undefined;
     form?: BusinessForm;
     canEditForm?: boolean;
@@ -17167,7 +17009,6 @@ export class HistoryFlowViewModel implements IHistoryFlowViewModel {
     state?: string | undefined;
     creatorDisplayName?: string | undefined;
     title?: string | undefined;
-    /** 删除原因 */
     deleteReason?: string | undefined;
 
     constructor(data?: IHistoryFlowViewModel) {
@@ -17218,7 +17059,6 @@ export interface IHistoryFlowViewModel {
     state?: string | undefined;
     creatorDisplayName?: string | undefined;
     title?: string | undefined;
-    /** 删除原因 */
     deleteReason?: string | undefined;
 }
 
@@ -17279,7 +17119,6 @@ export class HistoryProcesseInstance implements IHistoryProcesseInstance {
     form?: BusinessForm;
     emergencyLevel?: string | undefined;
     archNo?: string | undefined;
-    /** 显示部门 */
     displayDepartment?: string | undefined;
     claims?: Claim[] | undefined;
 
@@ -17347,7 +17186,6 @@ export interface IHistoryProcesseInstance {
     form?: BusinessForm;
     emergencyLevel?: string | undefined;
     archNo?: string | undefined;
-    /** 显示部门 */
     displayDepartment?: string | undefined;
     claims?: Claim[] | undefined;
 }
@@ -17679,7 +17517,6 @@ export class ListItemWithBody implements IListItemWithBody {
     isRead?: boolean;
     senderEmail?: string | undefined;
     displayTo?: string | undefined;
-    /** 收件人地址列表 */
     toRecipients?: string[] | undefined;
     body?: string | undefined;
     attachments?: Attachment[] | undefined;
@@ -17758,7 +17595,6 @@ export interface IListItemWithBody {
     isRead?: boolean;
     senderEmail?: string | undefined;
     displayTo?: string | undefined;
-    /** 收件人地址列表 */
     toRecipients?: string[] | undefined;
     body?: string | undefined;
     attachments?: Attachment[] | undefined;
@@ -18301,11 +18137,8 @@ export class MobileTaskList implements IMobileTaskList {
     createDateTime?: string | undefined;
     createDateTimeOffset?: Date | undefined;
     businessKey?: string | undefined;
-    /** 紧急程度 */
     emergencyLevel?: string | undefined;
-    /** 拟稿人 */
     drafterName?: string | undefined;
-    /** 文号 */
     archNo?: string | undefined;
     claims?: Claim[] | undefined;
 
@@ -18383,11 +18216,8 @@ export interface IMobileTaskList {
     createDateTime?: string | undefined;
     createDateTimeOffset?: Date | undefined;
     businessKey?: string | undefined;
-    /** 紧急程度 */
     emergencyLevel?: string | undefined;
-    /** 拟稿人 */
     drafterName?: string | undefined;
-    /** 文号 */
     archNo?: string | undefined;
     claims?: Claim[] | undefined;
 }
@@ -18992,7 +18822,6 @@ export class OpinionItem implements IOpinionItem {
     user?: UserReply;
     opinion?: Opinion;
     formatDateTime?: string | undefined;
-    /** 部门排序 */
     departmentOrder?: number | undefined;
 
     constructor(data?: IOpinionItem) {
@@ -19037,7 +18866,6 @@ export interface IOpinionItem {
     user?: UserReply;
     opinion?: Opinion;
     formatDateTime?: string | undefined;
-    /** 部门排序 */
     departmentOrder?: number | undefined;
 }
 
@@ -19823,7 +19651,6 @@ export interface IProcessDefConfig {
     processDefConfigItems?: ProcessDefConfigItem[] | undefined;
 }
 
-/** 处理定义配置 */
 export class ProcessDefConfigItem implements IProcessDefConfigItem {
     processDefId?: string | undefined;
     processDefKey?: string | undefined;
@@ -19873,7 +19700,6 @@ export class ProcessDefConfigItem implements IProcessDefConfigItem {
     }
 }
 
-/** 处理定义配置 */
 export interface IProcessDefConfigItem {
     processDefId?: string | undefined;
     processDefKey?: string | undefined;
@@ -19882,26 +19708,16 @@ export interface IProcessDefConfigItem {
 }
 
 export class ProcessDefConfigUserTaskItem implements IProcessDefConfigUserTaskItem {
-    /** 活动Id */
     activityId?: string | undefined;
-    /** 活动名称 */
     activityName?: string | undefined;
-    /** 能够上传附件 */
     canUploadAttachments?: boolean;
-    /** 能够修改附件 */
     canModifyAttachments?: boolean;
-    /** 能够删除附件 */
     canDeleteAttachments?: boolean;
-    /** 能够修改表单 */
     canModifyForm?: boolean;
     queryMode?: QueryMode;
-    /** 额外签收人 */
     includeAssignees?: ApplicationUser[] | undefined;
-    /** 额外签收部门 */
     includeAssigneeDepartments?: Department[] | undefined;
-    /** 排除签收人 */
     excludeAssignees?: ApplicationUser[] | undefined;
-    /** 排除签收部门 */
     excludeAssigneeDepartments?: Department[] | undefined;
 
     constructor(data?: IProcessDefConfigUserTaskItem) {
@@ -19986,26 +19802,16 @@ export class ProcessDefConfigUserTaskItem implements IProcessDefConfigUserTaskIt
 }
 
 export interface IProcessDefConfigUserTaskItem {
-    /** 活动Id */
     activityId?: string | undefined;
-    /** 活动名称 */
     activityName?: string | undefined;
-    /** 能够上传附件 */
     canUploadAttachments?: boolean;
-    /** 能够修改附件 */
     canModifyAttachments?: boolean;
-    /** 能够删除附件 */
     canDeleteAttachments?: boolean;
-    /** 能够修改表单 */
     canModifyForm?: boolean;
     queryMode?: QueryMode;
-    /** 额外签收人 */
     includeAssignees?: ApplicationUser[] | undefined;
-    /** 额外签收部门 */
     includeAssigneeDepartments?: Department[] | undefined;
-    /** 排除签收人 */
     excludeAssignees?: ApplicationUser[] | undefined;
-    /** 排除签收部门 */
     excludeAssigneeDepartments?: Department[] | undefined;
 }
 
@@ -20013,9 +19819,7 @@ export class ProcessDefViewModel implements IProcessDefViewModel {
     id?: string | undefined;
     key?: string | undefined;
     name?: string | undefined;
-    /** 描述 */
     description?: string | undefined;
-    /** 用户任务活动 */
     userTaskActvities?: StringKeyValue[] | undefined;
 
     constructor(data?: IProcessDefViewModel) {
@@ -20067,9 +19871,7 @@ export interface IProcessDefViewModel {
     id?: string | undefined;
     key?: string | undefined;
     name?: string | undefined;
-    /** 描述 */
     description?: string | undefined;
-    /** 用户任务活动 */
     userTaskActvities?: StringKeyValue[] | undefined;
 }
 
@@ -20199,7 +20001,6 @@ export enum QueryMode {
     _11 = 11,
 }
 
-/** 查询用户(带部门和职位信息) */
 export class QueryUsersDepartmentsItem implements IQueryUsersDepartmentsItem {
     total?: number;
     user?: ApplicationUser;
@@ -20244,7 +20045,6 @@ export class QueryUsersDepartmentsItem implements IQueryUsersDepartmentsItem {
     }
 }
 
-/** 查询用户(带部门和职位信息) */
 export interface IQueryUsersDepartmentsItem {
     total?: number;
     user?: ApplicationUser;
@@ -20807,7 +20607,6 @@ export interface IStartProcessDefinitionResViewModel {
     businessKey?: string | undefined;
 }
 
-/** 启动处理定义模型（Id和Key 二选一） */
 export class StartProcessDefinitionViewModel implements IStartProcessDefinitionViewModel {
     processDefinitionId?: string | undefined;
     processDefinitionKey?: string | undefined;
@@ -20868,7 +20667,6 @@ export class StartProcessDefinitionViewModel implements IStartProcessDefinitionV
     }
 }
 
-/** 启动处理定义模型（Id和Key 二选一） */
 export interface IStartProcessDefinitionViewModel {
     processDefinitionId?: string | undefined;
     processDefinitionKey?: string | undefined;
@@ -21362,11 +21160,8 @@ export class TodoTaskViewModel implements ITodoTaskViewModel {
     assignee?: UserReply;
     sender?: UserReply;
     isAssigneed?: boolean;
-    /** 暂存意见 */
     tempSaveOpinion?: string | undefined;
-    /** 是否是只读表单（不允许编辑） */
     isReadOnlyForm?: boolean;
-    /** 整个流程已经结束？ */
     isFlowFinished?: boolean;
     form?: FormDto;
 
@@ -21442,11 +21237,8 @@ export interface ITodoTaskViewModel {
     assignee?: UserReply;
     sender?: UserReply;
     isAssigneed?: boolean;
-    /** 暂存意见 */
     tempSaveOpinion?: string | undefined;
-    /** 是否是只读表单（不允许编辑） */
     isReadOnlyForm?: boolean;
-    /** 整个流程已经结束？ */
     isFlowFinished?: boolean;
     form?: FormDto;
 }
@@ -22519,9 +22311,7 @@ export class UpdateUserTaskViewModel implements IUpdateUserTaskViewModel {
     activityName?: string | undefined;
     queryMode?: QueryMode;
     assigneeUsers?: AssigneeUser[] | undefined;
-    /** 能上传附件或者编辑附件 */
     canUploadOrUpdateFiles?: boolean;
-    /** 能够编辑表单 */
     canEditForm?: boolean;
 
     constructor(data?: IUpdateUserTaskViewModel) {
@@ -22582,9 +22372,7 @@ export interface IUpdateUserTaskViewModel {
     activityName?: string | undefined;
     queryMode?: QueryMode;
     assigneeUsers?: AssigneeUser[] | undefined;
-    /** 能上传附件或者编辑附件 */
     canUploadOrUpdateFiles?: boolean;
-    /** 能够编辑表单 */
     canEditForm?: boolean;
 }
 
@@ -23244,9 +23032,7 @@ export class UserTaskItem implements IUserTaskItem {
     children?: UserTaskItem[] | undefined;
     parent?: UserTaskItem;
     assigneeUsers?: AssigneeUser[] | undefined;
-    /** 能上传附件或者编辑附件 */
     canUploadOrUpdateFiles?: boolean;
-    /** 能够编辑表单 */
     canEditForm?: boolean;
     readonly scopedSlots?: any | undefined;
 
@@ -23321,9 +23107,7 @@ export interface IUserTaskItem {
     children?: UserTaskItem[] | undefined;
     parent?: UserTaskItem;
     assigneeUsers?: AssigneeUser[] | undefined;
-    /** 能上传附件或者编辑附件 */
     canUploadOrUpdateFiles?: boolean;
-    /** 能够编辑表单 */
     canEditForm?: boolean;
     scopedSlots?: any | undefined;
 }

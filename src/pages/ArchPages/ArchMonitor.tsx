@@ -49,7 +49,7 @@ const ArchMonitor = () => {
         }
 
         const res = await processInstancesClient.getHistoryProcesseInstances((pageIndex - 1) * pageSize, pageSize, search,
-            undefined, undefined, onlyShowFinishedFlows.value, drafterUserNameValue, drafterName.value, undefined, proDefKeys)
+            undefined, undefined, onlyShowFinishedFlows.value, drafterUserNameValue, drafterName.value, undefined,undefined, proDefKeys)
         return res
     }, [pageIndex, pageSize, reloadTaskToggle.value, proDefKey, search, onlyShowFinishedFlows.value, drafterUserName.value,
         drafterName.value, onlyShowMeDrafter.value, userName])

@@ -59,6 +59,10 @@ export default function AttachmentsManagerPage() {
     const archs = useAsync(async () => {
         const value = getValues()
         var processDefKeys = value.processDefKey.split(',').filter(e => !StringUtils.isNullOrEmpty(e))
+        if(processDefKeys.length === 0){
+            processDefKeys = ['BGSSW','IPM.WF.XBGSSW','FWGL','IPM.WF.XFWGL']
+        }
+
         var offset = (value.pageIndex - 1) * value.pageSize
         const res = await attachmentsManagerClient.queryFormAttachments('', value.fileNameStartWith,
             value.fileNameEndWith, value.fileNameContains, offset, value.pageSize, processDefKeys)
@@ -201,26 +205,11 @@ export default function AttachmentsManagerPage() {
                                         <Radio value={''}>全部</Radio>
                                         <Radio value={'FWGL,IPM.WF.XFWGL'}>发文</Radio>
                                         <Radio value={'BGSSW,IPM.WF.XBGSSW'}>收文</Radio>
-                                        <Radio value={'GWSXSP,IPM.WF.GWSXSP'}>事项审批</Radio>
+                                       {/*  <Radio value={'GWSXSP,IPM.WF.GWSXSP'}>事项审批</Radio> */}
                                     </Space>
                                 </Radio.Group>} />
                         </Form.Item>
                     </Col>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                     {/*  <Col span={6}>

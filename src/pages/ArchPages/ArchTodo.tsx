@@ -11,10 +11,11 @@ import { ColumnsType } from "antd/lib/table"
 import Search from "antd/lib/input/Search"
 import Tag from "antd/es/tag"
 import { useAsync, useIdle, useInterval, useTitle } from "react-use"
-import { idleAutoFlushMs, isSSR, mainLayoutEnableReflush } from "../../Commmon/consts"
+import { idleAutoFlushMs, isSSR, mainLayoutEnableReflush, StringUtils } from "../../Commmon/consts"
 import { Controller, useController, useForm } from "react-hook-form"
 import { StarFilled, StarOutlined } from "@ant-design/icons"
 import { notificationError } from "../../messageBox"
+import { highlightText } from "../../Commmon/util"
 
 const dealLevels = [
     { name: '其他类型', days: 0 },
@@ -97,6 +98,13 @@ function ArchTodo() {
                 (search.pageIndex - 1) * search.pageSize, search.pageSize, false, search.title,
                 search.archType ?? '', processDefKeys)
 
+            if (!StringUtils.isNullOrEmpty(search.title)) {
+                res.rows?.forEach(item => {
+                    if (item.title) {
+                        item.title = highlightText(item.title, [search.title ?? ''])
+                    }
+                })
+            }
             return res
         }
     }, [t, reloadTaskToggle.value, getValues, userName])
@@ -207,7 +215,9 @@ function ArchTodo() {
             title: "标题",
             render: (task: MobileTaskList) => <label onClick={() => onOpenTaskBtnClick(task)}
                 style={{ wordBreak: "break-word", color: "#1890FF", cursor: 'pointer' }}>
-                【{task.processDefName}】{task.title?.substr(0, 100)}
+                【{task.processDefName}】<span dangerouslySetInnerHTML={{
+                    __html: task.title?.substr(0, 100) ?? ''
+                }}></span>
                 {(task.title?.length ?? 0) > 100 ? '...' : ''}</label>
         },
         {

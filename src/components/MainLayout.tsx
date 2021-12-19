@@ -249,7 +249,7 @@ const MainLayout1 = ({ children }: { children: React.ReactNode }) => {
                             <Menu.Item key="sub1-13" icon={<UserSwitchOutlined />} onClick={() => navigate('/ArchPages/UserTaskDelegate')}>公文授权</Menu.Item>
 
                             <Menu.Item key="sub1-14" icon={<StarFilled />} onClick={() => navigate('/ArchPages/ArchMonitorStar')}>星标公文</Menu.Item>
-                            <Menu.Item key="sub1-15" icon={<StarFilled />} onClick={() => navigate('/AdminPages/AttachmentsManagerPage')}>附件搜索</Menu.Item>
+                            <Menu.Item key="sub1-15" icon={<FileSearchOutlined />} onClick={() => navigate('/AdminPages/AttachmentsManagerPage')}>附件搜索</Menu.Item>
                         </SubMenu>
 
                         <SubMenu key="sub2" icon={<LaptopOutlined />} title="会议申请" style={{ background: '#002E8A', color: 'white' }}>

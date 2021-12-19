@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'development') {
   tempWorkFlowAPI = "http://192.168.1.3:8001"
   tempWorkFlowAPI = "http://172.26.130.105:81"
   //tempWorkFlowAPI = "http://172.26.130.243:81"
-  tempWorkFlowAPI = 'http://127.0.0.1:8500'
+  //tempWorkFlowAPI = 'http://127.0.0.1:8500'
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -41,7 +41,7 @@ if (process.env.NODE_ENV === 'production') {
     //tempWorkFlowAPI = window.location.origin
     tempWorkFlowAPI = "http://172.26.130.105:81"
     //tempWorkFlowAPI = "http://172.26.130.243:81"
-    tempWorkFlowAPI = window.location.origin
+    //tempWorkFlowAPI = window.location.origin
   }
 }
 

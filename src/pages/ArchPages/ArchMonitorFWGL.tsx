@@ -17,6 +17,7 @@ const { Option } = Select;
 import 'moment/locale/zh-cn';
 import locale from 'antd/es/date-picker/locale/zh_CN';
 import moment from "moment"
+import { highlightText } from "../../Commmon/util"
 
 const processDefKeys: Map<string, string> = new Map<string, string>([
     ['', '全部流程'],
@@ -38,6 +39,7 @@ interface IQueryParams {
     proDefKey: string
     startDate?: Date
     endDate?: Date
+    department?: string
 }
 
 const ArchMonitorFWGL = () => {
@@ -74,7 +76,31 @@ const ArchMonitorFWGL = () => {
         const res = await processInstancesClient.getHistoryProcesseInstances((value.pageIndex - 1) * value.pageSize, value.pageSize, value.titleLike,
             value.startDate, value.endDate,
             value.onlyShowFinishedFlows, value.onlyShowMeDrafter === true ? userName : undefined, value.drafterNameLike,
-            value.archNoLike, proDefKeys)
+            value.archNoLike, value.department, proDefKeys)
+
+        if (value.titleLike) {
+            res.rows?.forEach(element => {
+                if (element.form?.title) {
+                    element.form.title = highlightText(element.form.title, [value.titleLike ?? ''])
+                }
+            });
+        }
+
+        if (value.archNoLike) {
+            res.rows?.forEach(element => {
+                if (element.archNo) {
+                    element.archNo = highlightText(element.archNo, [value.archNoLike ?? ''])
+                }
+            });
+        }
+
+        if (value.department) {
+            res.rows?.forEach(element => {
+                if (element.displayDepartment) {
+                    element.displayDepartment = highlightText(element.displayDepartment, [value.department ?? ''])
+                }
+            });
+        }
         return res
     }, [reloadTaskToggle.value, proDefKeysString, userName])
 
@@ -92,7 +118,8 @@ const ArchMonitorFWGL = () => {
             archNoLike: undefined,
             drafterNameLike: undefined,
             onlyShowFinishedFlows: undefined,
-            onlyShowMeDrafter: undefined
+            onlyShowMeDrafter: undefined,
+            department: ''
         })
         reloadTaskToggle.Toggle()
     }
@@ -130,17 +157,18 @@ const ArchMonitorFWGL = () => {
             title: "标题",
             render: (instance: HistoryProcesseInstance) => <label onClick={() => openTask(instance.form)}
                 style={{ wordBreak: "break-word", color: "#1890FF", cursor: 'pointer' }}>
-                【{instance.form?.processDefName}】{instance.form?.title?.substr(0, 100)}
+                【{instance.form?.processDefName}】<span dangerouslySetInnerHTML={{ __html: instance.form?.title?.substr(0, 100) ?? '' }}></span>
                 {(instance.form?.title?.length ?? 0) > 100 ? '...' : ''}</label>
         },
         {
             title: "文号",
-            render: (instance: HistoryProcesseInstance) => instance.archNo,
+            render: (instance: HistoryProcesseInstance) => <span dangerouslySetInnerHTML={{ __html: instance.archNo ?? '' }}></span>,
             width: 200
         },
         {
             title: "来文单位",
-            render: (instance: HistoryProcesseInstance) => instance?.displayDepartment?.trim()?.replace('区市监局/', ''),
+            render: (instance: HistoryProcesseInstance) => <span
+                dangerouslySetInnerHTML={{ __html: instance?.displayDepartment?.trim()?.replace('区市监局/', '')??'' }}></span>,
             width: 200
         },
         {
@@ -208,6 +236,13 @@ const ArchMonitorFWGL = () => {
                 </Row>
 
                 <Row gutter={24}>
+                    <Col span={6}>
+                        <Form.Item label="来文单位">
+                            <Controller control={control} name='department'
+                                render={({ field }) => <Input allowClear {...field} />} />
+                        </Form.Item>
+                    </Col>
+
                     <Col span={6}>
                         <Form.Item>
                             <Controller control={control} name='onlyShowMeDrafter'
